@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Twitter App</title>
 <body>
-   <p>#tweet</p> 
+    <h1>Results</h1>
+    <ul>
+    {% for tweet in tweets %}
+   <li> <a href="https://twitter.com/statuses/{{ tweet.id }}">{{ tweet.text }}</a></li>
+    {% endfor %}
+   </ul> 
 </body>
 </html>

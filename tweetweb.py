@@ -1,6 +1,6 @@
 import os
 from flask import Flask, redirect, render_template, request
-
+from search import search
 
 
 app = Flask(__name__)
@@ -12,7 +12,9 @@ def get_index():
 
 @app.route("/results")
 def get_results():
-     return render_template("results.html")
+    topic = request.args.get("search")
+    results = search(topic, 10)
+    return render_template("results.html", tweets=results)
 
 if __name__ == '__main__':
     app.run(host=os.getenv('IP', '0.0.0.0'), port=int(os.getenv('PORT', 8080)), debug=True)
